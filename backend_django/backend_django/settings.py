@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+from google.oauth2 import service_account # type: ignore
+from google.cloud import storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +39,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'database',
 ]
+
+INSTALLED_APPS += ['storages']
+
+
+GS_BUCKET_NAME = 'bucket-storage-backend'  # Nombre del bucket de Google Cloud Storage
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    r"C:\Users\Juanja Malo\Desktop\backend-django-virtualizacion\backend_django\backend_django\inspiring-bonus-445203-p0-d3aab7b05921.json"
+) 
+
+client = storage.Client(credentials=GS_CREDENTIALS)
+bucket = client.get_bucket(GS_BUCKET_NAME)
+#DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+
+#MEDIA_URL = f"https://storage.googleapis.com/{GS_BUCKET_NAME}/" # URL base para acceder a los archivos
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -50,6 +67,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'backend_django.urls'
+
 
 TEMPLATES = [
     {
@@ -74,13 +92,23 @@ WSGI_APPLICATION = 'backend_django.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
+    
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'database',
+        'USER': 'admin',
+        'PASSWORD': 'JfO\{5TH(Izv%QXf',
+        'HOST': '34.16.116.172',  # Cambia si usas un servidor remoto
+        'PORT': '5432',
     }
+    
 }
 
-
+"""'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }"""
+    
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
