@@ -44,7 +44,7 @@ sudo apt install nginx -y
 sudo nano /etc/nginx/sites-available/django
 ```
 
-Ponemos la configuracion en el nano y cambiamos la ip externa (34.31.96.253 por la ip externa de la VM)
+Ponemos la configuracion en el nano y cambiamos la ip externa (34.31.96.253 por la ip externa de la VM) y cambiar la direccion de las llaves creadas (/home/usuario/backend-django-virtualizacion/cert.pem y /home/usuario/backend-django-virtualizacion/key.pem)
 ```bash
 server {
     listen 80;
@@ -59,8 +59,8 @@ server {
     listen 443 ssl;
     server_name 34.31.96.253;
 
-    ssl_certificate /etc/ssl/certs/selfsigned.crt;
-    ssl_certificate_key /etc/ssl/private/selfsigned.key;
+    ssl_certificate /home/usuario/backend-django-virtualizacion/cert.pem;
+    ssl_certificate_key /home/usuario/backend-django-virtualizacion/key.pem;
 
     location / {
         proxy_pass http://127.0.0.1:8000/;
