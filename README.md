@@ -56,17 +56,12 @@ Esta guía detalla cómo configurar un backend en Django sobre una VM de Google 
 
 ## 3. Pruebas en HTTP
 
-1. Activa el entorno virtual:
-   ```bash
-   source .venv/bin/activate
-   ```
-
-2. Ejecuta el servidor:
+1. Ejecuta el servidor:
    ```bash
    python manage.py runserver 0.0.0.0:8000
    ```
 
-3. Prueba la API en Postman:
+2. Prueba la API en Postman:
    ```
    http://<IP-EXTERNA>:8000/api/lista_imagenes/
    ```
