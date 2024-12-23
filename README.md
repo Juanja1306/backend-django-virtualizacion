@@ -1,4 +1,5 @@
 # backend-django-virtualizacion
+```bash
  Backend creado para las VM de google cloud
 sudo apt update && sudo apt upgrade -y
 sudo apt install git -y
@@ -6,15 +7,19 @@ git --version
 python3 --version
 git clone https://github.com/Juanja1306/backend-django-virtualizacion
 sudo apt install python3.11-venv -y
+python3 -m venv .venv
+pip install -r requirements.txt
+find / -name "inspiring-bonus-445203-p0-d3aab7b05921.json" 2>/dev/null
 source .venv/bin/activate
 python manage.py runserver 0.0.0.0:8000
-
+```
 # https
+```bash
 sudo openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
 sudo apt install nginx -y
 sudo nano /etc/nginx/sites-available/django
-
-
+```
+```bash
 server {
     listen 80;
     server_name 34.31.96.253;
@@ -38,9 +43,10 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
-
-
+```
+```bash
 sudo ln -s /etc/nginx/sites-available/django /etc/nginx/sites-enabled
 sudo nginx -t
 sudo systemctl reload nginx
 python manage.py runserver_plus 0.0.0.0:8000 --cert-file cert.pem --key-file key.pem
+```
