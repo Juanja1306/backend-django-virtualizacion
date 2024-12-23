@@ -1,6 +1,8 @@
 # backend-django-virtualizacion
+Backend creado para las VM de google cloud
+
+Actualizamos y descargamos el proyecto (Cambiamos python3.11 por la version de py correspondiente)
 ```bash
- Backend creado para las VM de google cloud
 sudo apt update && sudo apt upgrade -y
 sudo apt install git -y
 git --version
@@ -9,10 +11,31 @@ git clone https://github.com/Juanja1306/backend-django-virtualizacion
 sudo apt install python3.11-venv -y
 python3 -m venv .venv
 pip install -r requirements.txt
+```
+
+Creamos las credenciales 
+```bash
+nano inspiring-bonus-445203-p0-d3aab7b05921.json
+```
+
+Necesitamos ver la ubicacion del archivo 
+```bash
 find / -name "inspiring-bonus-445203-p0-d3aab7b05921.json" 2>/dev/null
+```
+
+Esa ubicacion la pegamos en el archivo "/home/usuario/backend-django-virtualizacion/backend_django/backend_django/settings.py" 
+```bash
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    r"/home/usuario/backend-django-virtualizacion/inspiring-bonus-445203-p0-d3aab7b05921.json"
+)
+```
+
+Por ultimo probamos el http
+```bash
 source .venv/bin/activate
 python manage.py runserver 0.0.0.0:8000
 ```
+
 # https
 ```bash
 sudo openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
