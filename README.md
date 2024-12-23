@@ -104,8 +104,8 @@ server {
     listen 443 ssl;
     server_name <IP-EXTERNA>;
 
-    ssl_certificate /home/usuario/backend-django-virtualizacion/cert.pem;
-    ssl_certificate_key /home/usuario/backend-django-virtualizacion/key.pem;
+    ssl_certificate /home/<USUARIO>/backend-django-virtualizacion/cert.pem;
+    ssl_certificate_key /home/<USUARIO>/backend-django-virtualizacion/key.pem;
 
     location / {
         proxy_pass http://127.0.0.1:8000/;
