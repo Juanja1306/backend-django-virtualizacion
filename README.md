@@ -43,6 +43,8 @@ sudo openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 
 sudo apt install nginx -y
 sudo nano /etc/nginx/sites-available/django
 ```
+
+Ponemos la configuracion en el nano y cambiamos la ip externa (34.31.96.253 por la ip externa de la VM)
 ```bash
 server {
     listen 80;
@@ -68,6 +70,8 @@ server {
     }
 }
 ```
+
+Reiniciamos y probamos el https
 ```bash
 sudo ln -s /etc/nginx/sites-available/django /etc/nginx/sites-enabled
 sudo nginx -t
