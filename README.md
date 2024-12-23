@@ -27,7 +27,6 @@ GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     r"/home/usuario/backend-django-virtualizacion/inspiring-bonus-445203-p0-d3aab7b05921.json"
 )
 ```
---- 
 Por ultimo probamos el http
 ```bash
 source .venv/bin/activate
@@ -36,7 +35,9 @@ python manage.py runserver 0.0.0.0:8000
 Probamos en el postman
 http://<ip-externa>:8000/api/lista_imagenes/
 
-## https
+---
+
+## HTTPS
 ```bash
 sudo openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
 sudo apt install nginx -y
