@@ -88,7 +88,7 @@ Esta guía detalla cómo configurar un backend en Django sobre una VM de Google 
    ```
 
 ### Configuración de Nginx
-Copia la siguiente configuración en el archivo de Nginx. Reemplaza la **IP externa** y las rutas de los certificados:
+Copia la siguiente configuración en el archivo de Nginx. Reemplaza la **IP externa** y las **rutas de los certificados**:
 
 ```nginx
 server {
