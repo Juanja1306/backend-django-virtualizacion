@@ -33,7 +33,7 @@ source .venv/bin/activate
 python manage.py runserver 0.0.0.0:8000
 ```
 Probamos en el postman
-http://<ip-externa>:8000/api/lista_imagenes/
+http://< ip-externa >:8000/api/lista_imagenes/
 
 ---
 
