@@ -1,7 +1,5 @@
-# backend-django-virtualizacion
-## Backend creado para las VM de google cloud
-
-Actualizamos y descargamos el proyecto (Cambiamos python3.11 por la version de py correspondiente)
+# Backend creado para las VM de google cloud
+## Actualizamos y descargamos el proyecto (Cambiamos python3.11 por la version de py correspondiente)
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install git -y
