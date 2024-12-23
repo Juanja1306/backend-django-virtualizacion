@@ -38,6 +38,7 @@ http://< ip-externa >:8000/api/lista_imagenes/
 ---
 
 ## HTTPS
+regresar a la ubicacion /backend-django-virtualizacion y crear los certificados
 ```bash
 sudo openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
 sudo apt install nginx -y
