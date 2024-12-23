@@ -148,4 +148,3 @@ https://<IP-EXTERNA>:8000/api/lista_imagenes/
 ### Notas finales
 - Asegúrate de reemplazar `<IP-EXTERNA>` con la IP externa de tu VM.
 - Mantén los certificados en una ubicación segura.
-- Si tienes problemas de permisos o conectividad, verifica los logs de Nginx y Django para solucionar posibles errores.
