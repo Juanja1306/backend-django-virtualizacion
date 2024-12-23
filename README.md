@@ -79,3 +79,5 @@ sudo nginx -t
 sudo systemctl reload nginx
 python manage.py runserver_plus 0.0.0.0:8000 --cert-file cert.pem --key-file key.pem
 ```
+Probamos en el postman
+https://< ip-externa >:8000/api/lista_imagenes/
