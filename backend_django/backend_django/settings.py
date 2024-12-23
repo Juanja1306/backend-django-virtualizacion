@@ -40,8 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'database',
+    'corsheaders',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # URL del frontend React
+]
 INSTALLED_APPS += ['storages']
 
 

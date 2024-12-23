@@ -5,6 +5,15 @@ from database import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('subir/', views.subir_imagen, name='subir_imagen'),
-    path('imagenes/', views.lista_imagenes, name='lista_imagenes'),
+    
+    path('api/crear_persona/', views.crear_persona, name='crear_persona'),
+    
+    #path('api/subir_imagen/', views.subir_imagen, name='subir_imagen'),
+    path('api/lista_imagenes/', views.lista_imagenes, name='lista_imagenes'),
+    
+    path('api/login/', views.login_usuario, name='login_usuario'),
+    
+    path('api/subir_imagen/', views.subir_imagen_y_asociar, name='subir_imagen_y_asociar'),
+    
+    path('api/imagenes/<int:usuario_id>/', views.obtener_imagenes_por_usuario, name='obtener_imagenes_por_usuario'),
 ]
