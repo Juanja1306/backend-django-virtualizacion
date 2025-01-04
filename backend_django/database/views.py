@@ -158,7 +158,41 @@ def obtener_imagenes_por_usuario(request, usuario_id):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
+@api_view(['DELETE'])
+def eliminar_imagen(request):
+    email = request.data.get('email')
+    contrasenia = request.data.get('contrasenia')
+    imagen_id = request.data.get('imagen_id')
 
+    # Verificar las credenciales del usuario
+    try:
+        persona = Persona.objects.get(email=email)
+        if not check_password(contrasenia, persona.contrasenia):
+            return JsonResponse({'error': 'Credenciales inválidas'}, status=401)
+    except Persona.DoesNotExist:
+        return JsonResponse({'error': 'Usuario no encontrado'}, status=404)
+
+    try:
+        # Obtener la imagen y la relación
+        imagen = Imagen.objects.get(id=imagen_id)
+        relacion = PersonaImagen.objects.get(persona=persona, imagen=imagen)
+
+        # Eliminar la imagen del bucket de Google Cloud Storage
+        blob_name = imagen.url.split('/')[-1]
+        blob = bucket.blob(blob_name)
+        blob.delete()
+
+        # Eliminar la relación y la imagen de la base de datos
+        relacion.delete()
+        imagen.delete()
+
+        return JsonResponse({'mensaje': 'Imagen eliminada exitosamente.'}, status=200)
+    except Imagen.DoesNotExist:
+        return JsonResponse({'error': 'Imagen no encontrada'}, status=404)
+    except PersonaImagen.DoesNotExist:
+        return JsonResponse({'error': 'La imagen no le pertenece'}, status=404)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
 
 # def subir_imagen(request):
 #     if request.method == 'POST':

@@ -17,5 +17,7 @@ urlpatterns = [
     
     path('api/imagenes/<int:usuario_id>/', views.obtener_imagenes_por_usuario, name='obtener_imagenes_por_usuario'),
     
-    path('api/healtcheck/', views.healthcheck, name='healthcheck'),
+    path('api/healtcheck/', views.health_check, name='healthcheck'),
+    
+    path('api/eliminar_imagen/', views.eliminar_imagen, name='eliminar_imagen'),
 ]
