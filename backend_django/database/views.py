@@ -81,7 +81,9 @@ def login_usuario(request):
     except Persona.DoesNotExist:
         return JsonResponse({'error': 'Usuario no encontrado'}, status=404)
 
-
+@api_view(['GET'])
+def health_check(request):
+    return JsonResponse({'status': ' ok'}, status=200)
 
 @api_view(['POST'])
 def subir_imagen_y_asociar(request):
